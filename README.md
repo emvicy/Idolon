@@ -1,8 +1,8 @@
-# Idolon Module for myMVC
+# Idolon Module for Emvicy2
 
-Just add this module to your [myMVC](https://github.com/gueff/myMVC) and get it run with this 3 Steps:
+Just add this module to your [Emvicy2](https://github.com/gueff/Emvicy2) and get it run with this 3 Steps:
 
-This is a Module for [myMVC](https://github.com/gueff/myMVC) which integrates the Idolon Image Server (https://github.com/gueff/idolon). Image Variation Requests become very easy.
+This is a Module for [Emvicy2](https://github.com/gueff/Emvicy2) which integrates the Idolon Image Server [gueff/idolon 1.1.2](https://github.com/gueff/idolon). Image Variation Requests become very easy.
 
 ## Dependencies
 
@@ -10,35 +10,33 @@ This is a Module for [myMVC](https://github.com/gueff/myMVC) which integrates th
 - php >= 7.4
     - execution of `shell_exec()`
 - imagemagick
-- gueff/idolon 1.1.2
-- [myMVC 3.2.x](https://github.com/gueff/myMVC/tree/3.2.x)
-    - ZIP: https://github.com/gueff/myMVC/archive/refs/heads/3.2.x.zip
+- [gueff/idolon 1.1.2](https://github.com/gueff/idolon) 
+- [Emvicy 2.x](https://github.com/gueff/Emvicy2/tree/2.x)
+    - ZIP: https://github.com/gueff/Emvicy2/archive/refs/heads/2.x.zip
       
        
 ## 1. Download this Repository
 
-and place it inside myMVC's `modules` folder.
+and place it inside Emvicy2's `modules` folder.
 Name it "Idolon". At the end it must look like this:
 ~~~
-    application
-    config
-    modules
-        Idolon
-            Controller
-            etc
-            Event
-            Model
-            install.sh
-            README.md
-    public
-    composer.json
-    myMVC.phar
-    README.md
+application
+config
+modules
+    Idolon
+        Controller
+        etc
+        Event
+        Model
+        install.sh
+        README.md
+public
+[..]
 ~~~
 
 ## 2. Add Idolon Library
 
-therefore, run install.sh
+therefore, run `install.sh`
 
 ~~~bash
 ./install.sh
