@@ -10,6 +10,9 @@ For any Requirements see the Readme there.
 
 - [Installation](#Installation)
 - [Usage](#Usage)
+  - [1. create a config file ](#config)
+  - [2. activate Idolon via Event Listener](#activate)
+- [Example](#Example)
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -30,7 +33,7 @@ git clone --branch 1.x https://github.com/emvicy/Idolon.git Idolon;
 
 ## Usage <a id="Usage"></a>
 
-### 1. create a config file
+### 1. create a config file <a id="config"></a>
 
 create a new file by copying the example file to your primary config (say it is module `Foo`)
 
@@ -85,7 +88,7 @@ $aConfig['MODULE']['Idolon']['@image'] = array(
 
 ------------------------------------------------------------------------------------------------------------------------
 
-## 2. activate Idolon via Event Listener
+## 2. activate Idolon via Event Listener <a id="activate"></a>
 
 create a new file by copying the example file to your primary event (say it is module `Foo`)
 
@@ -119,7 +122,7 @@ $aEvent = [
 
 ------------------------------------------------------------------------------------------------------------------------
 
-## Example
+## Example <a id="Example"></a>
 
 Due to the Config, this will serve the Image `emvicy.png` from the public folder `/public/` with 150x172 px:
 
