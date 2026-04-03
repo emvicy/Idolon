@@ -1,0 +1,15 @@
+.git
+.idea
+.bak
+.trash
+.env
+.test
+*.sql
+.ddev
+.phpstorm.meta.php
+gen
+*.tar.gz
+vendor
+_gitPull.sh
+_gitPush.sh
+_phanlistcreate.sh
