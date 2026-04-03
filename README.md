@@ -74,7 +74,7 @@ $bIDOLON_PREVENT_OVERSIZING = true;
 // Here in this example, "@image" ist the token
 // Idolon will automatically listen for (/@image/) then.
 $aConfig['MODULE']['Idolon']['@image'] = array(
-    'IDOLON_IMAGE_PATH' => $aConfig['MVC_BASE_PATH'] . '/public/images/default/',
+    'IDOLON_IMAGE_PATH' => $aConfig['MVC_BASE_PATH'] . '/public/',
 
     // copy general settings
     'IDOLON_CACHE_PATH' => $sIDOLON_CACHE_PATH,
@@ -121,24 +121,25 @@ $aEvent = [
 
 ## Example
 
-Due to the Config, this will serve the Image `screenshot.png` from the public folder `/images/` with 750x352 px:
+Due to the Config, this will serve the Image `emvicy.png` from the public folder `/public/` with 150x172 px:
 
 ~~~html
 <!-- request image with original width + height -->
-<img src="/@image/screenshot/png/">
+<img src="/@image/emvicy/png/">
 
-<!-- request image with width of 750px; height will be calculated -->
-<img src="/@image/screenshot/png/750/">
+<!-- request image with width of 150px; height will be calculated -->
+<img src="/@image/emvicy/png/150/">
 
-<!-- request image with width of 750px and height of 352px; redirect with proper dimension request if necessary -->
-<img src="/@image/screenshot/png/750/300/1/">
+<!-- request image with width of 150px and height of 172px; redirect with proper dimension request if necessary -->
+<img src="/@image/emvicy/png/150/172/1/">
 ~~~
 
 **Explanation**
 
-- The Request `/@image/screenshot/png/750/352/1/`is made.
-- The Event Listener (`\MVC\Event::BIND('mvc.controller.before', function(){..}`) checks the current Request.
+- The Request `/@image/emvicy/png/150/172/1/`is made.
+- The Event Listener on `mvc.controller.init.before` starts the Idolon Controller.
+- The current Request is checked.
 - If the first string after the domain is `@image` this means an image request has been detected.
-- So in this Example, the Request `/@image/screenshot/png/750/352/1/` will be handled by Idolon Module.
+- So in this Example, the Request `/@image/emvicy/png/150/172/1/` will be handled by Idolon Module.
 
 
