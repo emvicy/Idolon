@@ -1,21 +1,9 @@
 <?php
 
-/**
- * Index.php
- *
- * @package myMVC
- * @copyright ueffing.net
- * @author Guido K.B.W. Üffing <info@ueffing.net>
- * @license GNU GENERAL PUBLIC LICENSE Version 3. See application/doc/COPYING
- */
-
-/**
- * @name $IdolonModel
- */
 namespace Idolon\Model;
 
 
-use MVC\Helper;
+use MVC\File;
 
 /**
  * Index
@@ -125,7 +113,7 @@ class Index extends \Idolon
 			array_filter(
 				explode(
 					'/',
-                    \MVC\Request::getCurrentRequest()->get_path()
+                    \MVC\Request::in()->get_path()
 				), 
 				function($mValue){
 					return ($mValue !== null && $mValue !== false && $mValue !== '');
@@ -231,7 +219,7 @@ class Index extends \Idolon
         // delete
         for ($i = 0; $i < $iFilesToDelete; $i++)
         {
-            unlink(Helper::secureFilePath($aFile[$i]));
+            unlink(File::secureFilePath($aFile[$i]));
         }
     }
 }

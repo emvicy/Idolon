@@ -1,0 +1,22 @@
+<?php
+
+#-------------------------------------------------------------
+# declare bindings
+
+$aEvent = [
+    'mvc.controller.init.before' => array(
+
+        // Start Idolon
+        function() {
+            new \Idolon\Controller\Index(
+                \MVC\Request::in(),
+                \MVC\Route::getCurrent()
+            );
+        }
+    ),
+];
+
+#-------------------------------------------------------------
+# process: bind the declared ones
+
+\MVC\Event::processBindConfigStack($aEvent);

@@ -1,88 +1,46 @@
 <?php
 
-/**
- * Index.php
- *
- * @package myMVC
- * @copyright ueffing.net
- * @author Guido K.B.W. Üffing <info@ueffing.net>
- * @license GNU GENERAL PUBLIC LICENSE Version 3. See application/doc/COPYING
- */
-
-/**
- * @name $IdolonController
- */
 namespace Idolon\Controller;
 
 
-/**
- * Index
- * @implements \MVC\MVCInterface\Controller
- */
-class Index implements \MVC\MVCInterface\Controller
+use App\Controller;
+use MVC\Config;
+use MVC\DataType\DTRequestIn;
+use MVC\DataType\DTRoute;
+
+class Index extends Controller
 {
     /**
-     * @var array
+     * @param \MVC\DataType\DTRequestIn $oDTRequestIn
+     * @param \MVC\DataType\DTRoute     $oDTRoute
+     * @throws \ReflectionException
      */
-    protected $aConfig = array();
+    public function __construct(DTRequestIn $oDTRequestIn, DTRoute $oDTRoute)
+    {
+        // get token
+        $sToken = (array_first($oDTRequestIn->get_pathArray()) ?? '');
+        $aConfig = (Config::MODULE('Idolon')[$sToken] ?? array());
 
-	/**
-	 * Model Object
-	 * 
-	 * @var \Idolon\Model\Index 
-	 * @access protected
-	 */
-	protected $_oIdolonModelIndex;
-
-	/**
-	 * this method is autom. called by MVC_Application->runTargetClassBeforeMethod()
-	 * in very early stage
-	 * 
-	 * @access public
-	 * @static
-	 */
-	public static function __preconstruct ()
-	{
-	    ;
-	}
+        // handle due to token config
+        if (false === empty($aConfig))
+        {
+            new \Idolon\Model\Index(array(
+                'bPreventOversizing' => $aConfig['IDOLON_PREVENT_OVERSIZING']
+            ))
+                ->setImagePath($aConfig['IDOLON_IMAGE_PATH'])
+                ->setCachepath($aConfig['IDOLON_CACHE_PATH'])
+                ->setIdolonToken($sToken)
+                ->setMaxCacheFilesForImage($aConfig['IDOLON_MAX_CACHE_FILES_FOR_IMAGE'])
+                ->run()
+            ;
+        }
+    }
 
     /**
-     * Index constructor.
-     * @param array $aConfig
+     * @throws \ReflectionException
      */
-	public function __construct (array $aConfig = array())
-	{
-	    $this->aConfig = $aConfig;
-		$this->_oIdolonModelIndex = new \Idolon\Model\Index(array(
-			'bPreventOversizing' => $this->aConfig['IDOLON_PREVENT_OVERSIZING']
-		));
-	}
-
-	/**
-	 * index
-	 * @access public
-	 */
-	public function index ()
-	{
-        $bSuccess = $this->_oIdolonModelIndex
-			->setImagePath($this->aConfig['IDOLON_IMAGE_PATH'])
-            ->setCachepath($this->aConfig['IDOLON_CACHE_PATH'])
-			->setIdolonToken($this->aConfig['IDOLON_TOKEN'])
-			->setMaxCacheFilesForImage($this->aConfig['IDOLON_MAX_CACHE_FILES_FOR_IMAGE'])
-			->run()
-			;
-
-        exit();
-	}
-
-	/**
-	 * Destructor
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	public function __destruct ()
-	{
-		;
-	}	
+    public function __destruct ()
+    {
+        parent::__destruct();
+    }
 }

@@ -6,7 +6,7 @@ setlocale(LC_NUMERIC, 'C');
 /**
  * Idolon config
  */
-$aConfig['MODULE_IDOLON'] = array(
+$aConfig['MODULE']['Idolon'] = array(
 
     // Token
     // This is the string directly located after domain which indicates an image request
