@@ -66,7 +66,7 @@ _route_
 Due to the config given by route (additional), this will serve the Image `emvicy.png` from the public folder `/public/` in different variations:
 
 ~~~html
-            <!-- request image with original width + height; auto-redirects with proper dimension ratio request if necessary -->
+<!-- request image with original width + height; auto-redirects with proper dimension ratio request if necessary -->
 <img src="/idolon/emvicy/png/">
 
 <!-- request image with width of 150px; height will be calculated; auto-redirects with proper dimension ratio request if necessary -->
