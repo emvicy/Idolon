@@ -15,7 +15,7 @@ class Index extends \Idolon
 	 * @access private
 	 * @var string
 	 */
-	private $_sIdolonToken = 'image';
+	private $_sIdolonToken = 'idolon';
 	
 	/**
 	 * @access private
@@ -188,7 +188,7 @@ class Index extends \Idolon
      * @param int $iMaxCacheFiles
      * @return $this
      */
-	public function setMaxCacheFilesForImage($iMaxCacheFiles = 10)
+	public function setMaxCacheFilesForImage(int $iMaxCacheFiles = 10)
 	{
 		$this->_iMaxCacheFiles = $iMaxCacheFiles;
 		
@@ -200,11 +200,11 @@ class Index extends \Idolon
      */
 	public function __destruct()
     {
-        $aFile = glob($this->_sCachePath . $this->_sImage . '_*');
+        $aFile = glob($this->_sCachePath . self::seofy($this->_sImage) . '*');
 
         // oldest first
         array_multisort(
-            array_map( 'filemtime', $aFile ),
+            array_map('filemtime', $aFile),
             SORT_NUMERIC,
             SORT_ASC,
             $aFile

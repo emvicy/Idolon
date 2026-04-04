@@ -1,0 +1,21 @@
+<?php
+
+\MVC\Route::get(
+    sPath: '/idolon/*',
+    sClassMethod: '\Idolon\Controller\Idolon::serve',
+    sTag: 'idolon',
+    mOptional: \MVC\DataType\DTRoutingAdditional::create()->set_mData(array(
+
+        // folder to look after existing images for this route
+        'IDOLON_IMAGE_PATH' => $GLOBALS['aConfig']['MVC_BASE_PATH'] . '/public/',
+
+        // cache folder for those images
+        'IDOLON_CACHE_PATH' => $GLOBALS['aConfig']['MVC_CACHE_DIR'] . '/idolon/',
+
+        // how much cached versions of an image
+        'IDOLON_MAX_CACHE_FILES_FOR_IMAGE' => 20,
+
+        // prevent creating bigger images than original
+        'IDOLON_PREVENT_OVERSIZING' => true,
+    ))
+);

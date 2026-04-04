@@ -4,24 +4,26 @@ namespace Idolon\Controller;
 
 
 use App\Controller;
-use MVC\Config;
 use MVC\DataType\DTRequestIn;
 use MVC\DataType\DTRoute;
 
-class Index extends Controller
+class Idolon extends Controller
 {
     /**
      * @param \MVC\DataType\DTRequestIn $oDTRequestIn
      * @param \MVC\DataType\DTRoute     $oDTRoute
+     * @return void
      * @throws \ReflectionException
      */
-    public function __construct(DTRequestIn $oDTRequestIn, DTRoute $oDTRoute)
+    public function serve(DTRequestIn $oDTRequestIn, DTRoute $oDTRoute)
     {
         // get token
         $sToken = (array_first($oDTRequestIn->get_pathArray()) ?? '');
-        $aConfig = (Config::MODULE('Idolon')[$sToken] ?? array());
 
-        // handle due to token config
+        // get config out of routing additional
+        $aConfig = $oDTRoute->get_additional();
+
+        // handle due to config
         if (false === empty($aConfig))
         {
             new \Idolon\Model\Index(array(
@@ -34,13 +36,5 @@ class Index extends Controller
                 ->run()
             ;
         }
-    }
-
-    /**
-     * @throws \ReflectionException
-     */
-    public function __destruct ()
-    {
-        parent::__destruct();
     }
 }
