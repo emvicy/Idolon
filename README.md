@@ -66,14 +66,17 @@ _route_
 Due to the config given by route (additional), this will serve the Image `emvicy.png` from the public folder `/public/` in different variations:
 
 ~~~html
-<!-- request image with original width + height -->
+            <!-- request image with original width + height; auto-redirects with proper dimension ratio request if necessary -->
 <img src="/idolon/emvicy/png/">
 
-<!-- request image with width of 150px; height will be calculated -->
+<!-- request image with width of 150px; height will be calculated; auto-redirects with proper dimension ratio request if necessary -->
 <img src="/idolon/emvicy/png/150/">
 
-<!-- request image with width of 150px and height of 172px; redirect with proper dimension request if necessary -->
+<!-- request image with width of 150px and height of 172px; redirects with proper dimension ratio request if necessary -->
 <img src="/idolon/emvicy/png/150/172/1/">
+
+<!-- request image with width of 150px and height of 150px; NO redirect - serves it as it is requested -->
+<img src="/idolon/emvicy/png/150/150/0/">
 
 <!--smarty-->
 <!--create different variations of image-->
